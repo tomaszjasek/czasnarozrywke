@@ -1,0 +1,39 @@
+<html>
+<head>
+    <!-- Do³¹cz bibliotekê jwplayera -->
+    <script src="http://jwpsrv.com/library/5FSC3i6wEeSbXyIACtqXBA.js"></script>
+</head>
+
+
+<body>
+    <!-- Wstaw poni¿szy kod gdziekolwiek wewn¹trz tagu <body>. -->
+    <div id="jwplayer-564">
+        <p class="no-items">
+            Nie uda³o siê zainicowaæ flash playera. Prosimy w³¹czyæ obs³ugê flasha w przegl¹darce lub odtwarzaj w systemowym playerze.
+            Je¿eli odpowiedni player nie otworzy³ siê, skopiuj jeden z linków poni¿ej i wklej go do po¿¹danego playera zgodnie z Twoim systemem operacyjnym.
+        </p>
+        <ul>
+            <li><a href="rtsp://stream4.nadaje.com:12042/live/live.stream">Windows, Linux - VLC player</a></li>
+            <li><a href="http://stream4.nadaje.com:12042/live/live.stream/playlist.m3u8">iOS - Quick Time</a></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        jwplayer('jwplayer-564').setup({ 
+            width: '100%',
+            aspectratio: '16:9', 
+            androidhls: true,
+            stretching: 'exactfit',
+            sources: [{
+                file: 'rtmp://stream4.nadaje.com:12042/live/live.stream'
+                }, {
+                file: 'http://stream4.nadaje.com:12042/live/live.stream/playlist.m3u8'
+            }],
+            rtmp: {
+                bufferlength: 3
+            },
+            autostart: true,
+            fallback: false,
+        });
+    </script>
+</body>
+</html>

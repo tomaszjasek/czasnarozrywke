@@ -1,0 +1,33 @@
+<!doctype html>
+<html class="no-js" lang="{{ app.request.locale|split('_')[0] }}">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="{{ asset("bundles/app/img/favicon.ico") }}"/>
+
+    <link rel="apple-touch-icon-precomposed"
+          href="{{ asset("bundles/app/img/apple-touch-icon-precomposed.png") }}"/>
+    {% block sitemeta %}
+        <title>Tenis amatorski</title>
+        <meta name="description" content="">
+    {% endblock %}
+    {% block stylesheets %}
+        {% stylesheets
+        'bundles/app/css/style.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+<body class="{% block main_css_class %}{% endblock %}">
+
+{% block spinner %}{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+    'bundles/app/js/app.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+</body>
+</html>

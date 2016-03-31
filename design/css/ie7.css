@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+#pasek {
+	position: relative;
+}
+#loginbox {
+	top: 3px;
+}
+.nonebutton {
+	font-size: 11px !important;
+}
+ul#menu li, ul#menu li a, ul#submenu li, ul#submenu li a  {
+	display: inline;
+}
