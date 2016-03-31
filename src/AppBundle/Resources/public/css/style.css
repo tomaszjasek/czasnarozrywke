@@ -1,0 +1,381 @@
+@charset "utf-8";
+
+html, body {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Arial, Helvetica, Sans-serif;
+    font-size: 13px;
+}
+img {
+    border: 0 none !important;
+    text-decoration: none !important;
+}
+ul, form, p, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #cecece;
+}
+a:hover {
+    text-decoration: underline;
+}
+a.first, li.first {
+    border-left: 0 none !important;
+    border-top: 0 none !important;
+    background: none !important;
+}
+a.last, li.last {
+    border-right: 0 none !important;
+    border-bottom: 0 none !important;
+    background: none !important;
+}
+#pasek {
+    height: 5px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    background: #000;
+}
+body {
+    color: #a2c3d0;
+    background: url(../img/top.bmp) no-repeat top center #038bbf;
+}
+#top {
+    height: 181px;
+    width: 1227px;
+    margin: 0 auto;
+    position: relative;
+}
+
+ul#menu, ul#submenu {
+    width: 1227px;
+    margin: 0 auto;
+    clear: both;
+    list-style: none;
+    text-align: center;
+}
+ul#menu {
+    height: 41px;
+    background: url(../img/menu.png) no-repeat;
+}
+ul#submenu {
+    height: 24px;
+    background: url(../img/submenu.png) no-repeat;
+}
+
+ul#menu li {
+    display: inline-block;
+    color: #606060;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+ul#menu li a {
+    display: inline-block;
+    background: url(../img/menubgbr.png) right center no-repeat;
+    padding: 13px 12px;
+    color: #fff;
+}
+ul#menu li a:hover {
+    text-decoration: underline;
+}
+ul#submenu li {
+    display: inline-block;
+    color: #5b5b5b;
+}
+ul#submenu li a {
+    display: inline-block;
+    background: url(../img/submenubgbr.png) right center no-repeat;
+    padding: 6px 12px;
+    color: #5b5b5b;
+}
+ul#submenu li a:hover {
+    text-decoration: underline;
+}
+
+#main {
+    width: 1227px;
+    margin: 2px auto 20px auto;
+    overflow: hidden;
+}
+#left, #right {
+    width: 227px;
+}
+#left {
+    float: left;
+}
+#center {
+    width: 757px;
+    float: left;
+    margin: 0 8px;
+}
+#right {
+    float: right;
+}
+#bottom {
+    background: url(../img/bottom.png) no-repeat;
+    width: 1190px;
+    clear: both;
+    font-size: 11px;
+    padding:  13px 20px;
+    padding-bottom: 50px;
+    height: 12px;
+    margin: 0 auto;
+}
+#bottom p {
+    float: left;
+}
+p.rightp {
+    float: right !important;
+}
+
+
+
+ul.menuv {
+    list-style: none;
+}
+ul.menuv li {
+    margin: 2px 0;
+    display: block;
+    overflow: hidden;
+    background: url(../img/li.png) no-repeat bottom center;
+}
+ul.menuv li a {
+    background: url(../img/arrowswidegrey.png) no-repeat 8px;
+    display: block;
+    padding: 2px 5px 5px 20px;
+    color: #a2c3d0;
+}
+ul.menuv li a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.box {
+    clear: both;
+    margin-bottom: 4px;
+    border: 1px solid #005481;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: url(../img/box.png) repeat-y;
+    padding: 8px;
+    overflow: hidden;
+}
+.box h2 {
+    font-size: 11px;
+    font-weight: normal;
+    color: #000;
+    margin: -5px -5px 5px -5px;
+    text-align: center;
+    padding: 11px 0;
+    text-transform: uppercase;
+    background: url(../img/h2.png) no-repeat center;
+    text-shadow: #111 1px 1px 1px;
+}
+
+
+.news {
+    padding: 8px;
+    padding-bottom: 45px;
+    margin-bottom: 4px;
+    background: url(../img/news.png) repeat-y center;
+    position: relative;
+    color: #5a5a5a;
+}
+
+.news h1 {
+    font-size: 11px;
+    font-weight: normal;
+    color: #222;
+    margin: -8px -8px 5px -8px;
+    padding: 10px 15px;
+    background: url(../img/h1news.png) no-repeat;
+}
+.news p {
+    text-align: justify;
+    vertical-align:top;
+    margin: 2px;
+    padding: 0;
+}
+.news img {
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.newsfooter {
+    clear: both;
+    width: 757px;
+    padding: 0 0px;
+    height: 35px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: url(../img/news-bottom.png) no-repeat bottom;
+}
+.newsfooter a.author {
+    float: left;
+    margin: 0;
+    margin-top: 7px;
+    text-decoration: none;
+    color: inherit !important;
+}
+.newsfooter a {
+    float: right;
+}
+
+.buttonblue {
+    width: 70px;
+    height: 14px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    padding: 4px 0;
+    border: 0 none;
+    text-shadow: #111 2px 2px 1px;
+    text-decoration: none;
+    background: url('../img/button.png') no-repeat;
+}
+.buttongreen:hover, .buttonviolet:hover, .buttonblack:hover, .buttonblue:hover {
+    text-decoration: none;
+}
+input[type=submit].buttongreen, input[type=button].buttongreen,
+input[type=submit].buttonblack, input[type=button].buttonblack,
+input[type=submit].buttonviolet, input[type=button].buttonviolet,
+input[type=submit].buttonblue, input[type=button].buttonblue {
+    height: 24px !important;
+}
+
+#ankieta {
+    margin: 0 auto;
+    width: 200px;
+}
+#ankieta p.tit {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+#ankieta .anopt {
+    background: url(../img/ankietaoff.png) repeat-x;
+    width: 200px;
+    margin: 5px 0;
+    height: 10px;
+}
+#ankieta .anopton {
+    background: url(../img/ankietaon.png) repeat-x;
+    height: 10px;
+}
+#ankieta p.linki {
+    text-align: center;
+    margin: 15px auto 5px auto;
+    width: 200px;
+    overflow: hidden;
+    font-weight: bold;
+    font-family: inherit;
+    font-size: inherit;
+    color: #fff;
+}
+#ankieta a {
+    color: #fff;
+}
+.nonebutton {
+    border: 0 none;
+    background: none;
+    font-weight: bold;
+    font-family: inherit;
+    font-size: inherit;
+    color: #fff;
+    cursor: pointer;
+}
+#ankieta ul {
+    list-style: none;
+    width: 170px;
+    margin: 0 auto;
+}
+#ankieta ul li {
+    padding: 2px 0;
+}
+#ankieta ul li, #ankieta ul li a, #ankieta ul li a:hover {
+    text-decoration: none;
+}
+
+#loginbox {
+    position: absolute;
+    width: 445px;
+    height: 180px;
+    right: 2px;
+    top: 8px;
+    color: #fff;
+}
+#loginbox ul {
+    list-style: none;
+    float: left;
+    font-size: 8px;
+    margin-left: 2px;
+}
+#loginbox input[type=submit] {
+    background: url(../img/loginok.png);
+    text-align: center;
+    width: 44px;
+    height: 21px;
+    padding: 2px 0;
+    font-size: 10px;
+    float: left;
+    border: 0 none;
+    color: #fff;
+}
+input[type=text], input[type=password] {
+    padding: 2px;
+    width: 148px;
+    height: 18px;
+    background: url(../img/input.png) no-repeat;
+    border: 0 none;
+    float: left;
+    margin: 0 1px;
+}
+#loginbox ul li a {
+    padding: 2px 2px 2px 8px;
+    background: url(../img/arrowswidegrey.png) no-repeat;
+    background-position: 0 5px;
+}
+
+.shoutcomment {
+    padding: 5px;
+    clear: both;
+    margin: 2px -5px;
+    min-height: 30px;
+}
+p.shoutauthor {
+    color: #fff;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+p.shoutdate {
+    color: #56b3d6;
+    padding-bottom: 3px;
+}
+p.shout {
+    clear: both;
+    margin-bottom: 5px;
+}
+#shoutboxform input[type=text] {
+    background: url('../img/input207.png') no-repeat;
+    width:203px;
+    height: 26px;
+    padding: 2px;
+    font-family:Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    border: 0 none;
+    color: #909090 !important;
+    margin: 2px 0;
+}
+#shoutboxform a {
+    float: left;
+    margin: 5px 7px;
+}
