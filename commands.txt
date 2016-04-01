@@ -1,0 +1,13 @@
+GENERATE ENTITY FROM DB
+php bin/console doctrine:mapping:import --force AppBundle xml --filter=Discipline
+php bin/console doctrine:mapping:convert annotation ./src --filter=Discipline
+php bin/console doctrine:generate:entities AppBundle
+
+LOAD FIXTURES
+php bin/console doctrine:fixtures:load
+
+CLEAR CACHE
+php bin/console cache:clear
+
+ASSETIC REGENERATE
+php bin/console assetic:dump
