@@ -21,156 +21,89 @@
 </head>
 <body>
 
-<div id="pasek"></div>
+{{ include("AppBundle::header.html.twig") }}
 
-<div id="top">
-    <div id="loginbox">
-        <form action="" method="post">
-            <input type="text" name="login" value="Login..." />
-            <input type="password" name="password" value="Hasło..." />
-            <input type="submit" value="OK" />
-            <ul>
-                <li><a href="#">Rejestracja</a></li>
-                <li><a href="#">Zapomniane Hasło</a></li>
-            </ul>
-        </form>
-    </div>
-</div>
+{{ include("AppBundle:Navigation:menu.html.twig") }}
 
-
-<ul id="menu">
-    <li><a href="#">STRONA GŁÓWNA</a></li>
-    <li><a href="#">STWÓRZ WYDARZENIE</a></li>
-
-    <li><a href="#">SZUKAJ WYDARZENIA</a></li>
-    <li><a href="#">REJESTRACJA</a></li>
-    <li><a href="#">KONTAKT</a></li>
-    <li><a href="http://www.sportstream.pl" class="last">SPORTOWA TELEWIZJA INTERNETOWA</a></li>
-</ul>
-
-<ul id="submenu">
-    <li><a href="#">Zgłoś turniej</a></li>
-
-    <li><a href="#">Zgłoś ligę</a></li>
-    <li><a href="#">Zgłoś lokal</a></li>
-    <li><a href="#">Video</a></li>
-    <li><a href="#">Zgłoś się jako trener</a></li>
-</ul>
 <div id="main">
 
-    {{ render(controller("AppBundle:Navigation:disciplinesNavigation")) }}
+    {% block left_panel %}
+        {{ render(controller("AppBundle:Navigation:disciplinesNavigation")) }}
+    {% endblock %}
 
-    <div id="center">
+    {% block content %}{% endblock %}
 
+    {% block right_panel %}
+        <div id="right">
+            <div class="box">
+                <h2>Logowanie</h2>
 
-        <div class="news">
-            <h1><b>www.tenis-amatorski.pl</b></h1>
+                <div class="shoutcomment">
 
-            <p>Witajcie !<br>
-                <br>
-                Portal www.tenis-amatorski.pl podjął się misji stworzenia społeczności tenisowej. Zarejestrowani użytkownicy będą otrzymywać informacje o turniejach tenisowych, ligach oraz innych rozgrywkach w regionie. Będą mogli także zaczerpnąć informacje o kortach tenisowych w mieście oraz wyszukać kontakt do trenerów. Na stronie znajdą się także informacje o sklepach tenisowych i punktach serwisów rakiet<br>
-                <br>
-                Oficjalny początek profesjonalnie zaprojektowanego portalu zaplanowany jest na styczeń 2016 roku. Jednak od chwili obecnej na stronie można już się zarejestrować i już dziś otrzymywać informację o tenisowych amatorskich wydarzeniach w Polsce. <br>
-                <br>
-                Aby otrzymywać informacje ze świata polskiego tenisa amatorskiego wypełnij poniższy formularz. <br>
-                <br>
-            <form method="post" action="register.php">
-                <input type="text" name="email"> - <b>E-mail</b><br><br>
-                <input type="text" name="miasto"> - <b>Miasto</b><br><br>
-                <input type="text" name="wojewodztwo"> - <b>Województwo</b><br><br>
+                    <p class="shoutauthor">~Gall</p>
+                    <p class="shoutdate">DATA: 27/06/2009 22:21</p>
+                    <p class="shout">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,a</p>
 
-                <input type="submit" value="ZAREJESTRUJ"><br><br>
-            </form>
+                </div></div>
 
-            Na podany e-mail w ciągu 24 godzin wysłany zostanie e-mail z potwierdzeniem rejestracji. Jeśli mail dotrze do spamu, prosimy odznaczyć wiadomość jako „to nie jest spam”, aby w przyszłości e-maile trafiały do głównej skrzynki odbiorczej.<br>
-            <br>
-            <b>Funkcje strony:<br></b>
-            - informowanie użytkownika o amatorskich turniejach tenisowych,<br>
-            - informowanie użytkownika o amatorskich ligach tenisowych,<br>
-            - informowanie użytkownika o kortach tenisowych w regionie,<br>
-            - informowanie użytkownika o sklepach tenisowych w Polsce,<br>
-            - informowanie użytkownika o trenerach w Polsce,<br>
-            - <b>dobór partnerów do gry - </b> każda osoba nie mająca partnera będzie mogła zgłosić chęś wspólnej gry i otrzymać propozycję sparingu od innego gracza zarejestrowanego na portalu.<br>
-            </p>
-            <br><br><br><br><br><br><br>
-            <div class="newsfooter">
+            <div class="box">
 
+                <h2>Ankieta</h2>
+
+                <form action="" method="post" id="ankieta">
+
+                    <p class="tit">Jaki sport uprawiasz ?</p>
+
+                    <ul>
+
+                        <li><input type="radio" name="anks" id="ank1" /><label for="ank1">Piłka nożna</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank2">Koszykówka</label></li>
+
+                        <li><input type="radio" name="anks" id="ank1" /><label for="ank3">Siatkówka</label></li>
+
+                        <li><input type="radio" name="anks" id="ank2" /><label for="ank4">Futsal</label></li>
+
+                        <li><input type="radio" name="anks" id="ank1" /><label for="ank5">Tenis ziemny</label></li>
+
+                        <li><input type="radio" name="anks" id="ank2" /><label for="ank6">Tenis stołowy</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank7">Badminton</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Squash</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Piłka ręczna</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Kolarstwo</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Bieganie</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Narciarstwo</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Sporty walki</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Łyżwiarstwo</label></li>
+
+                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Toważyski</label></li>
+
+                        <li><input type="radio" name="anks" id="ank4" /><label for="ank9">Żadne z powyższych</label></li>
+
+                    </ul>
+
+                    <br>
+                    <p class="linki">
+                        <input type="submit" value="Oddaj głos" style="float: left;" class="nonebutton" />
+
+                        <a href="#" class="buttonblack" style="float: right;">Zobacz Wyniki</a>
+                    </p>
+
+                </form>
             </div>
-        </div></div>
-
-
-    <div id="right">
-
-
-        <div class="box">
-            <h2>Logowanie</h2>
-
-            <div class="shoutcomment">
-
-                <p class="shoutauthor">~Gall</p>
-                <p class="shoutdate">DATA: 27/06/2009 22:21</p>
-                <p class="shout">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,a</p>
-
-            </div></div>
-
-        <div class="box">
-
-            <h2>Ankieta</h2>
-
-            <form action="" method="post" id="ankieta">
-
-                <p class="tit">Jaki sport uprawiasz ?</p>
-
-                <ul>
-
-                    <li><input type="radio" name="anks" id="ank1" /><label for="ank1">Piłka nożna</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank2">Koszykówka</label></li>
-
-                    <li><input type="radio" name="anks" id="ank1" /><label for="ank3">Siatkówka</label></li>
-
-                    <li><input type="radio" name="anks" id="ank2" /><label for="ank4">Futsal</label></li>
-
-                    <li><input type="radio" name="anks" id="ank1" /><label for="ank5">Tenis ziemny</label></li>
-
-                    <li><input type="radio" name="anks" id="ank2" /><label for="ank6">Tenis stołowy</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank7">Badminton</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Squash</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Piłka ręczna</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Kolarstwo</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Bieganie</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Narciarstwo</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Sporty walki</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Łyżwiarstwo</label></li>
-
-                    <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Toważyski</label></li>
-
-                    <li><input type="radio" name="anks" id="ank4" /><label for="ank9">Żadne z powyższych</label></li>
-
-                </ul>
-
-                <br>
-                <p class="linki">
-                    <input type="submit" value="Oddaj głos" style="float: left;" class="nonebutton" />
-
-                    <a href="#" class="buttonblack" style="float: right;">Zobacz Wyniki</a>
-                </p>
-
-            </form></div>
-    </div>
+        </div>
+    {% endblock %}
 </div>
-<div id="bottom">
-    <p>Copyright (c) tenis-amatorski.pl 2014. Wszelkie prawa zastrzeżone.</p>
-    <p class="rightp"></p>
-</div>
+
+{{ include("AppBundle::footer.html.twig") }}
 
 {% block javascripts %}
     {% javascripts
