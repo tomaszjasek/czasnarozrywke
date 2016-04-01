@@ -23,7 +23,19 @@
 
 <div id="pasek"></div>
 
-<div id="top"></div>
+<div id="top">
+    <div id="loginbox">
+        <form action="" method="post">
+            <input type="text" name="login" value="Login..." />
+            <input type="password" name="password" value="Hasło..." />
+            <input type="submit" value="OK" />
+            <ul>
+                <li><a href="#">Rejestracja</a></li>
+                <li><a href="#">Zapomniane Hasło</a></li>
+            </ul>
+        </form>
+    </div>
+</div>
 
 
 <ul id="menu">
@@ -46,58 +58,9 @@
 </ul>
 <div id="main">
 
-    <div id="left">
+    {{ render(controller("AppBundle:Navigation:disciplinesNavigation")) }}
 
-        <div class="box">
-
-            <h2>TYP ROZRYWKI</h2>
-            <ul class="menuv">
-                <li><a href="#">PIŁKA NOŻNA</a></li>
-                <li><a href="#">KOSZYKÓWKA</a></li>
-                <li><a href="#">SIATKÓWKA</a></li>
-                <li><a href="#">TENIS ZIEMNY</a></li>
-                <li><a href="#">TENIS STOŁOWY</a></li>
-                <li><a href="#">BILARD</a></li>
-
-                <li><a href="#">GOKARTY</a></li>
-                <li><a href="#">PAINTBALL</a></li>
-
-                <li><a href="#">PIŁKA RĘCZNA</a></li>
-                <li><a href="#">PŁYWANIE</a></li>
-
-                <li><a href="#">KOLARSTWO</a></li>
-
-                <li><a href="#">E-GAMING</a></li>
-
-                <li><a href="#">BUMBER BALL</a></li>
-                <li><a href="#">ULTIMATE FRISBEE</a></li>
-                <li><a href="#">SQUASH</a></li>
-
-                <li><a href="#">BADMINTON</a></li>
-
-                <li><a href="#">BIEGANIE</a></li>
-
-                <li><a href="#">FITNES</a></li>
-
-                <li><a href="#">DART</a></li>
-
-                <li><a href="#">SZACHY, WARCABY</a></li>
-
-                <li><a href="#">GRY KARCIANE</a></li>
-
-                <li><a href="#">NARCIARSTWO</a></li>
-
-                <li><a href="#">SPORTY WALKI</a></li>
-
-                <li><a href="#">ŁYŻWIARSTWO</a></li>
-
-                <li><a href="#">STRZELECTWO</a></li>
-
-                <li><a href="#">WSPINACZKA</a></li>
-
-            </ul></div>
-
-    </div><div id="center">
+    <div id="center">
 
 
         <div class="news">

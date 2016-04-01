@@ -1,0 +1,10 @@
+<div id="left">
+  <div class="box">
+    <h2>TYP ROZRYWKI</h2>
+    <ul class="menuv">
+    {% for discipline in disciplines %}
+      <li><a href="#">{{ discipline.name|upper }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
