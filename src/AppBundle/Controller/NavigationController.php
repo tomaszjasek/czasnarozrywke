@@ -16,7 +16,7 @@ class NavigationController extends Controller
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Discipline');
 
-        $disciplines = $repository->findAll();
+        $disciplines = $repository->findBy([], ['order' => 'ASC']);
 
         return $this->render('AppBundle:Navigation:disciplines.html.twig', array(
             'disciplines' => $disciplines
