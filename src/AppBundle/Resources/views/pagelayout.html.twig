@@ -21,7 +21,13 @@
 </head>
 <body>
 
-{{ include("AppBundle::header.html.twig") }}
+<div id="pasek"></div>
+
+<div id="top">
+    {% block header %}
+        {{ include("AppBundle::header.html.twig") }}
+    {% endblock %}
+</div>
 
 {{ include("AppBundle:Navigation:menu.html.twig") }}
 
