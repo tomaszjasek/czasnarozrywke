@@ -34,72 +34,7 @@
     {% block content %}{% endblock %}
 
     {% block right_panel %}
-        <div id="right">
-            <div class="box">
-                <h2>Logowanie</h2>
-
-                <div class="shoutcomment">
-
-                    <p class="shoutauthor">~Gall</p>
-                    <p class="shoutdate">DATA: 27/06/2009 22:21</p>
-                    <p class="shout">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,a</p>
-
-                </div></div>
-
-            <div class="box">
-
-                <h2>Ankieta</h2>
-
-                <form action="" method="post" id="ankieta">
-
-                    <p class="tit">Jaki sport uprawiasz ?</p>
-
-                    <ul>
-
-                        <li><input type="radio" name="anks" id="ank1" /><label for="ank1">Piłka nożna</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank2">Koszykówka</label></li>
-
-                        <li><input type="radio" name="anks" id="ank1" /><label for="ank3">Siatkówka</label></li>
-
-                        <li><input type="radio" name="anks" id="ank2" /><label for="ank4">Futsal</label></li>
-
-                        <li><input type="radio" name="anks" id="ank1" /><label for="ank5">Tenis ziemny</label></li>
-
-                        <li><input type="radio" name="anks" id="ank2" /><label for="ank6">Tenis stołowy</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank7">Badminton</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Squash</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Piłka ręczna</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Kolarstwo</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Bieganie</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Narciarstwo</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Sporty walki</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Łyżwiarstwo</label></li>
-
-                        <li><input type="radio" name="anks" id="ank3" /><label for="ank8">Toważyski</label></li>
-
-                        <li><input type="radio" name="anks" id="ank4" /><label for="ank9">Żadne z powyższych</label></li>
-
-                    </ul>
-
-                    <br>
-                    <p class="linki">
-                        <input type="submit" value="Oddaj głos" style="float: left;" class="nonebutton" />
-
-                        <a href="#" class="buttonblack" style="float: right;">Zobacz Wyniki</a>
-                    </p>
-
-                </form>
-            </div>
-        </div>
+        {{ include("AppBundle::right.html.twig") }}
     {% endblock %}
 </div>
 
