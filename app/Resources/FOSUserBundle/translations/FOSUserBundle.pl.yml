@@ -1,0 +1,9 @@
+security:
+    login:
+        username: 'Login'
+        password: 'Hasło'
+        remember_me: 'Nie wylogowuj mnie'
+        submit: 'OK'
+# Global strings
+layout:
+    password_forgot: 'Zapomniałem hasła'
