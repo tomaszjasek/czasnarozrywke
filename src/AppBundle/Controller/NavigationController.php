@@ -13,10 +13,9 @@ class NavigationController extends Controller
      */
     public function disciplinesNavigationAction(Request $request)
     {
-        $repository = $this->getDoctrine()
-            ->getRepository('AppBundle:Discipline');
+        $disciplineService = $this->get('app.service.discipline');
 
-        $disciplines = $repository->findBy([], ['order' => 'ASC']);
+        $disciplines = $disciplineService->getDisciplines();
 
         return $this->render('AppBundle:Navigation:disciplines.html.twig', array(
             'disciplines' => $disciplines
