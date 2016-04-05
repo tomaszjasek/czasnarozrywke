@@ -1,3 +1,6 @@
+DOCTRINE UPDATE
+php bin/console doctrine:schema:update --force
+
 GENERATE ENTITY FROM DB
 php bin/console doctrine:mapping:import --force AppBundle xml --filter=Discipline
 php bin/console doctrine:mapping:convert annotation ./src --filter=Discipline
@@ -11,3 +14,6 @@ php bin/console cache:clear
 
 ASSETIC REGENERATE
 php bin/console assetic:dump
+
+CREATE USER
+php bin/console fos:user:create testuser test@example.com 123456

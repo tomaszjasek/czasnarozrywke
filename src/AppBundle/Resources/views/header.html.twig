@@ -1,4 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
+
 <div id="loginbox">
 
   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -22,19 +23,19 @@
       <form action="{{ path("fos_user_security_check") }}" method="post">
         <input type="hidden" name="_csrf_token" value="{{ fos_csrf_provider.getToken('authenticate').getValue() }}" />
 
-        <input type="text" id="username" name="_username" placeholder="Login..." required="required" />
+        <input type="text" id="username" name="_username" placeholder="{{ "security.login.username"|trans }}" required="required" />
 
-        <input type="password" id="password" name="_password" placeholder="Hasło..." required="required" />
+        <input type="password" id="password" name="_password" placeholder="{{ "security.login.password"|trans }}" required="required" />
 
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>#}
 
         <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
       </form>
 
       <ul>
-        <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans }}</a></li>
-        <li><a href="{{ path('fos_user_resetting_request') }}">{{ 'layout.password_forgot'|trans }}</a></li>
+        <li><a href="{{ path('fos_user_registration_register') }}">{{ "layout.register"|trans }}</a></li>
+        <li><a href="{{ path('fos_user_resetting_request') }}">{{ "layout.password_forgot"|trans }}</a></li>
       </ul>
 
     {% endif %}
