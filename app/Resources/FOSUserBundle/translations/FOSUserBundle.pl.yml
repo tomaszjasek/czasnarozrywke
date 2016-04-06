@@ -1,3 +1,5 @@
+profile:
+    disciplines: 'Dyscypliny'
 security:
     login:
         username: 'Login'
@@ -7,5 +9,6 @@ security:
 # Global strings
 layout:
     password_forgot: 'Zapomniałem hasła'
+    profile: 'Profil'
 form:
     disciplines: 'Dyscypliny'

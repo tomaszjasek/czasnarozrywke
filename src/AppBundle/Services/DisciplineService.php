@@ -15,15 +15,19 @@ class DisciplineService {
 
     protected $doctrine;
 
+    /**
+     * @var \Doctrine\Common\Persistence\ObjectRepository
+     */
+    protected $repository;
+
     public function __construct(ManagerRegistry $doctrine)
     {
         $this->doctrine = $doctrine;
+        $this->repository = $this->doctrine->getRepository('AppBundle:Discipline');
     }
 
     public function getDisciplines()
     {
-        $repository = $this->doctrine->getRepository('AppBundle:Discipline');
-
-        return $repository->findBy([], ['order' => 'ASC']);
+        return $this->repository->findBy([], ['order' => 'ASC']);
     }
 } 

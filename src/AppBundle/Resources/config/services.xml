@@ -13,6 +13,12 @@
             <tag name="form.type" alias="app_user_registration" />
         </service>
 
+        <service id="app.form.profile" class="AppBundle\Form\ProfileType">
+            <argument type="service" id="app.service.discipline" />
+            <argument type="service" id="security.token_storage" />
+            <tag name="form.type" alias="app_user_profile" />
+        </service>
+
     </services>
 
 </container>

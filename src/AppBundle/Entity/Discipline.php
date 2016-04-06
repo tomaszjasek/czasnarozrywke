@@ -42,8 +42,6 @@ class Discipline
      */
     private $id;
 
-
-
     /**
      * Set name
      *
