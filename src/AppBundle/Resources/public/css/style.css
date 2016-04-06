@@ -330,7 +330,7 @@ input[type=submit].buttonblue, input[type=button].buttonblue {
     border: 0 none;
     color: #fff;
 }
-input[type=text], input[type=password] {
+#loginbox input[type=text], #loginbox input[type=password] {
     padding: 2px;
     width: 148px;
     height: 18px;
