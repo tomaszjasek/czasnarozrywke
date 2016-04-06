@@ -19,7 +19,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(name="disciplines", type="array")
+     * @ORM\Column(name="disciplines", type="array", nullable=TRUE)
      *
      * @var array
      */
