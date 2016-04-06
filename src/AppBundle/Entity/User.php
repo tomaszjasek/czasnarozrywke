@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
+
+/** @noinspection ClassOverridesFieldOfSuperClassInspection */
 class User extends BaseUser
 {
     /**
