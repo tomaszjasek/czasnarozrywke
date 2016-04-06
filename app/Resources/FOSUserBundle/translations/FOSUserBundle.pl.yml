@@ -7,3 +7,5 @@ security:
 # Global strings
 layout:
     password_forgot: 'Zapomniałem hasła'
+form:
+    disciplines: 'Dyscypliny'

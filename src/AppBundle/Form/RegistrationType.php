@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Discipline;
 use AppBundle\Services\DisciplineService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -24,7 +25,13 @@ class RegistrationType extends AbstractType
         $disciplines = $this->disciplineService->getDisciplines();
 
         $builder->add('disciplines', ChoiceType::class, array(
+            'label' => 'form.disciplines',
+            'translation_domain' => 'FOSUserBundle',
             'choices' => $disciplines,
+            'choice_label' => function($discipline) {
+                /** @var Discipline $discipline */
+                return $discipline->getName();
+            },
             'choices_as_values' => true,
             'expanded' => true,
             'multiple' => true
