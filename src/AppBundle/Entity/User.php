@@ -5,12 +5,10 @@ namespace AppBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
+/** @noinspection ClassOverridesFieldOfSuperClassInspection
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
-
-/** @noinspection ClassOverridesFieldOfSuperClassInspection */
 class User extends BaseUser
 {
     /**
