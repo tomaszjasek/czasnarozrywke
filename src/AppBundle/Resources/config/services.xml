@@ -10,6 +10,7 @@
 
         <service id="app.form.registration" class="AppBundle\Form\RegistrationType">
             <argument type="service" id="app.service.discipline" />
+            <tag name="form.type" alias="app_user_registration" />
         </service>
 
     </services>
