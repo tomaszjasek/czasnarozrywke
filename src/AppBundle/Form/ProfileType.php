@@ -13,53 +13,56 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Discipline;
 use AppBundle\Entity\User;
-use AppBundle\Services\DisciplineService;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Test\FormInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class ProfileType extends AbstractType
 {
-    /**
-     * @var DisciplineService
-     */
-    protected $disciplineService;
-
     /**
      * @var TokenStorage
      */
     protected $tokenStorage;
 
     public function __construct(
-        DisciplineService $disciplineService,
+        EntityManager $em,
         TokenStorage $tokenStorage
     ) {
-        $this->disciplineService = $disciplineService;
+        $this->em = $em;
         $this->tokenStorage = $tokenStorage;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $disciplines = $this->disciplineService->getDisciplines();
-
         /** @var User $user */
-        $user = $this->tokenStorage->getToken()->getUser();
+        $userDisciplines = $this->tokenStorage->getToken()->getUser()->getDisciplines();
 
-        $builder->add('disciplines', ChoiceType::class, array(
-            'label' => 'form.disciplines',
-            'translation_domain' => 'FOSUserBundle',
-            'choices' => $disciplines,
-            'choice_label' => function($discipline) {
-                /** @var Discipline $discipline */
-                return $discipline->getName();
-            },
-            'choices_as_values' => true,
-            'expanded' => true,
-            'multiple' => true
-        ));
+        $data = array();
+        foreach($userDisciplines as $discipline) {
+            /** @var Discipline $discipline */
+            $data[] = $this->em->getReference('AppBundle:Discipline', $discipline->getId());
+        }
+
+        $builder
+            ->add('disciplines', EntityType::class, array(
+                'class' => 'AppBundle:Discipline',
+                'label' => 'form.disciplines',
+                'translation_domain' => 'FOSUserBundle',
+                'choice_label' => function($discipline) {
+                    /** @var Discipline $discipline */
+                   return $discipline->getName();
+                },
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('d')
+                        ->orderBy('d.name', 'ASC');
+                },
+                'expanded' => true,
+                'multiple' => true,
+                'data' => $data
+            ));
     }
 
     public function getParent()

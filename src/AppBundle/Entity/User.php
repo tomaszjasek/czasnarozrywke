@@ -25,11 +25,10 @@ class User extends BaseUser
      */
     protected $disciplines;
 
-    public function __construct(array $disciplines)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->disciplines = $disciplines;
+        $this->disciplines = array();
     }
 
     public function setDisciplines(array $disciplines)
