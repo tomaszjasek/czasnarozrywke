@@ -12,6 +12,9 @@
     </ul>
 
     <a href="{{ path('fos_user_profile_edit') }}">
-        {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
+        {{ 'profile.edit.submit'|trans }}
+    </a> |
+    <a href="{{ path('fos_user_change_password') }}">
+        {{ 'change_password.submit'|trans }}
     </a>
 </div>
