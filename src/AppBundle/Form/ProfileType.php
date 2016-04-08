@@ -47,6 +47,8 @@ class ProfileType extends AbstractType
         }
 
         $builder
+            ->remove('current_password');
+        $builder
             ->add('disciplines', EntityType::class, array(
                 'class' => 'AppBundle:Discipline',
                 'label' => 'form.disciplines',

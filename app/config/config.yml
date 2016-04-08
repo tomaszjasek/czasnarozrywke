@@ -82,6 +82,15 @@ fos_user:
             enabled: true
         form:
             type: AppBundle\Form\RegistrationType
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        # Your other blocks
+
 assetic:
     debug: '%kernel.debug%'
     use_controller: false

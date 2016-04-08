@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /** @noinspection ClassOverridesFieldOfSuperClassInspection
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @ORM\HasLifecycleCallbacks
  */
 class User extends BaseUser
 {
@@ -25,10 +26,31 @@ class User extends BaseUser
      */
     protected $disciplines;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    protected $created_at;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    protected $updated_at;
+
     public function __construct()
     {
         parent::__construct();
         $this->disciplines = array();
+        $this->created_at = $this->updated_at = new \DateTime('now');
+    }
+
+    /** @ORM\PreUpdate */
+    public function updated()
+    {
+        $this->updated_at = new \DateTime('now');
     }
 
     public function setDisciplines(array $disciplines)

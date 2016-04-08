@@ -19,4 +19,4 @@ INSTALL ASSETS
 php bin/console assets:install
 
 CREATE USER
-php bin/console fos:user:create testuser test@example.com 123456
+php bin/console fos:user:create test test@example.com 123456
