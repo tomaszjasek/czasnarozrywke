@@ -43,7 +43,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface, Ordered
         $manager->persist($user);
 
         //php bin/console fos:user:create admin admin@example.com 123456
-        $adminUser = $manipulator->create('admin', '123456', 'admin@example.com', true, true);
+        $manipulator->create('admin', '123456', 'admin@example.com', true, true);
 
         $manager->flush();
     }
