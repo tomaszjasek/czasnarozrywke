@@ -2,12 +2,11 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\Entity\Discipline;
+use AppBundle\Entity\User;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -25,31 +24,28 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface, Ordered
 
     public function load(ObjectManager $manager)
     {
-        $kernel = $this->container->get('kernel');
-        $application = new Application($kernel);
-        $application->setAutoExit(false);
-        $output = new NullOutput();
+        $manipulator = $this->container->get('fos_user.util.user_manipulator');
 
         //php bin/console fos:user:create testuser test@example.com 123456
-        $input = new ArrayInput(array(
-            'command'   => 'fos:user:create',
-            'username'  => 'test',
-            'email'     => 'test@example.com',
-            'password'  => '123456',
-        ));
-        $application->run($input, $output);
+        /** @var User $user */
+        $user = $manipulator->create('test', '123456', 'test@example.com', true, false);
+        $userDisciplines = [];
+        $disciplinesNames = array('piłka nożna', 'kolarstwo', 'dart');
+        $disciplineService = $this->container->get('app.service.discipline');
+        $disciplines = $disciplineService->getDisciplines();
+        foreach($disciplines as $discipline) {
+            /** @var Discipline $discipline */
+            if(in_array($discipline->getName(), $disciplinesNames, false)) {
+                $userDisciplines[] = $discipline;
+            }
+        }
+        $user->setDisciplines($userDisciplines);
+        $manager->persist($user);
 
         //php bin/console fos:user:create admin admin@example.com 123456
-        $input = new ArrayInput(array(
-            'command'   => 'fos:user:create',
-            'username'  => 'admin',
-            'email'     => 'admin@example.com',
-            'password'  => '123456',
-            '--super-admin' => true
-        ));
-        $application->run($input, $output);
+        $adminUser = $manipulator->create('admin', '123456', 'admin@example.com', true, true);
 
-
+        $manager->flush();
     }
 
     public function getOrder()
