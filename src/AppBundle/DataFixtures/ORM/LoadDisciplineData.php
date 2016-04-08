@@ -3,10 +3,11 @@
 namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Discipline;
 
-class LoadDisciplineData implements FixtureInterface
+class LoadDisciplineData implements FixtureInterface, OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -167,5 +168,12 @@ class LoadDisciplineData implements FixtureInterface
         $manager->persist($discipline);
 
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        // the order in which fixtures will be loaded
+        // the lower the number, the sooner that this fixture is loaded
+        return 1;
     }
 }
