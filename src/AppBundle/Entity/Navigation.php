@@ -20,11 +20,18 @@ class Navigation
     private $name;
 
     /**
- * @var string
- *
- * @ORM\Column(name="url", type="string", length=255, nullable=false)
- */
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255, nullable=false)
+     */
     private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text", nullable=true)
+     */
+    private $content;
 
     /**
      * @var string
@@ -168,5 +175,21 @@ class Navigation
     public function setParentId($parentId)
     {
         $this->parentId = $parentId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
     }
 }
