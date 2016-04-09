@@ -26,9 +26,8 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface, Ordered
     {
         $manipulator = $this->container->get('fos_user.util.user_manipulator');
 
-        //php bin/console fos:user:create test test@example.com 123456
         /** @var User $user */
-        $user = $manipulator->create('test', '123456', 'test@example.com', true, false);
+        $user = $manipulator->create('test', '123456', 'tomaszjasek@gmail.com', true, false);
         $userDisciplines = [];
         $disciplinesNames = array('piłka nożna', 'kolarstwo', 'dart');
         $disciplineService = $this->container->get('app.service.discipline');
@@ -42,8 +41,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface, Ordered
         $user->setDisciplines($userDisciplines);
         $manager->persist($user);
 
-        //php bin/console fos:user:create admin admin@example.com 123456
-        $manipulator->create('admin', '123456', 'admin@example.com', true, true);
+        $manipulator->create('admin', '123456', 'tomaszjasek2@gmail.com', true, true);
 
         $manager->flush();
     }
