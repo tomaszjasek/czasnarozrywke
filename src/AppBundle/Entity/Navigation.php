@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Discipline
  *
- * @ORM\Table(name="discipline")
+ * @ORM\Table(name="navigation")
  * @ORM\Entity
  */
-class Discipline
+class Navigation
 {
     /**
      * @var string
@@ -18,6 +18,20 @@ class Discipline
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
     private $name;
+
+    /**
+ * @var string
+ *
+ * @ORM\Column(name="url", type="string", length=255, nullable=false)
+ */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="parent_id", type="integer", nullable=false)
+     */
+    private $parentId;
 
     /**
      * @var boolean
@@ -122,5 +136,37 @@ class Discipline
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
+    }
+
+    /**
+     * @param string $parentId
+     */
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
     }
 }

@@ -80,6 +80,7 @@ class User extends BaseUser
      */
     public function getDisciplines()
     {
+        usort($this->disciplines, array($this,'sortByName'));
         return $this->disciplines;
     }
 
@@ -101,5 +102,10 @@ class User extends BaseUser
         }
 
         return $this;
+    }
+
+    protected function sortByName(Discipline $a, Discipline $b)
+    {
+        return strcmp($a->getName(), $b->getName());
     }
 }
