@@ -1,5 +1,6 @@
 <ul id="menu">
     {% for node in navigation %}
+        {#TODO twig method for url#}
         <li><a href="{{ node.url }}">{{ node.name }}</a></li>
     {% endfor %}
 </ul>
