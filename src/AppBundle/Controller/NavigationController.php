@@ -21,4 +21,20 @@ class NavigationController extends Controller
             'disciplines' => $disciplines
         ));
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function mainNavigationAction(Request $request)
+    {
+        $navigationService = $this->get('app.service.navigation');
+
+        $navigation = $navigationService->getMainNavigation();
+
+        return $this->render('AppBundle:Navigation:menu.html.twig', array(
+            'navigation' => $navigation
+        ));
+    }
+
 }
