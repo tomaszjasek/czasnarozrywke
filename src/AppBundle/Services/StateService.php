@@ -11,7 +11,7 @@ namespace AppBundle\Services;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 
-class DisciplineService {
+class StateService {
 
     protected $doctrine;
 
@@ -23,20 +23,20 @@ class DisciplineService {
     public function __construct(ManagerRegistry $doctrine)
     {
         $this->doctrine = $doctrine;
-        $this->repository = $this->doctrine->getRepository('AppBundle:Discipline');
+        $this->repository = $this->doctrine->getRepository('AppBundle:State');
     }
 
-    public function getDisciplines()
+    public function getStates()
     {
-        return $this->repository->findBy([], ['order' => 'ASC']);
+        return $this->repository->findAll();
     }
 
-    public function getDiscipline($id)
+    public function getState($id)
     {
         return $this->repository->find($id);
     }
 
-    public function getDisciplineByName($name)
+    public function getStateByName($name)
     {
         return $this->repository->findOneBy(['name' => $name]);
     }

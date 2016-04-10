@@ -38,33 +38,34 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         /** @var User $user */
-        $userDisciplines = $this->tokenStorage->getToken()->getUser()->getDisciplines();
+        $userInterests = $this->tokenStorage->getToken()->getUser()->getInterests();
 
         $data = array();
-        foreach($userDisciplines as $discipline) {
+        foreach($userInterests as $interest) {
+            $discipline = $interest['discipline'];
             /** @var Discipline $discipline */
             $data[] = $this->em->getReference('AppBundle:Discipline', $discipline->getId());
         }
 
         $builder
-            ->remove('current_password');
-        $builder
-            ->add('disciplines', EntityType::class, array(
-                'class' => 'AppBundle:Discipline',
-                'label' => 'form.disciplines',
-                'translation_domain' => 'FOSUserBundle',
-                'choice_label' => function($discipline) {
-                    /** @var Discipline $discipline */
-                   return $discipline->getName();
-                },
-                'query_builder' => function(EntityRepository $er) {
-                    return $er->createQueryBuilder('d')
-                        ->orderBy('d.name', 'ASC');
-                },
-                'expanded' => true,
-                'multiple' => true,
-                'data' => $data
-            ));
+            ->remove('current_password')
+            ->remove('username');
+//            ->add('disciplines', EntityType::class, array(
+//                'class' => 'AppBundle:Discipline',
+//                'label' => 'form.disciplines',
+//                'translation_domain' => 'FOSUserBundle',
+//                'choice_label' => function($discipline) {
+//                    /** @var Discipline $discipline */
+//                   return $discipline->getName();
+//                },
+//                'query_builder' => function(EntityRepository $er) {
+//                    return $er->createQueryBuilder('d')
+//                        ->orderBy('d.name', 'ASC');
+//                },
+//                'expanded' => true,
+//                'multiple' => true,
+//                'data' => $data
+//            ));
     }
 
     public function getParent()

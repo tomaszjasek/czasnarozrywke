@@ -12,3 +12,11 @@ layout:
     profile: 'Profil'
 form:
     disciplines: 'Dyscypliny'
+    discipline: 'Dyscyplina'
+    state: 'Województwo'
+    city: 'Miasta'
+    all: 'Wszystkie'
+resetting:
+    request:
+        invalid_username: 'E-mail "%username%" nie istnieje.'
+        username: 'E-mail'

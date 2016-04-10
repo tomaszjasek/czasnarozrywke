@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Discipline
+ * Navigation
  *
  * @ORM\Table(name="navigation")
  * @ORM\Entity

@@ -25,23 +25,43 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface, Ordered
     public function load(ObjectManager $manager)
     {
         $manipulator = $this->container->get('fos_user.util.user_manipulator');
+        $disciplineService = $this->container->get('app.service.discipline');
+        $stateService = $this->container->get('app.service.state');
 
         /** @var User $user */
-        $user = $manipulator->create('test', '123456', 'tomaszjasek@gmail.com', true, false);
-        $userDisciplines = [];
-        $disciplinesNames = array('piłka nożna', 'kolarstwo', 'dart');
-        $disciplineService = $this->container->get('app.service.discipline');
-        $disciplines = $disciplineService->getDisciplines();
-        foreach($disciplines as $discipline) {
-            /** @var Discipline $discipline */
-            if(in_array($discipline->getName(), $disciplinesNames, false)) {
-                $userDisciplines[] = $discipline;
+        $user = $manipulator->create('tomaszjasek@gmail.com', '123456', 'tomaszjasek@gmail.com', true, false);
+        $userInterests = [];
+
+        $userInterestsData = array(
+            array('discipline' => 'piłka nożna', 'state' => 'lubuskie', 'city' => '' ),
+            array('discipline' => 'kolarstwo', 'state' => 'małopolskie', 'city' => 'Warszawa' ),
+            array('discipline' => 'dart', 'state' => '', 'city' => '' )
+        );
+
+        foreach($userInterestsData as $userInterestData) {
+            $discipline = null;
+            $state = null;
+            $city = null;
+            if($userInterestData['discipline']) {
+                $discipline = $disciplineService->getDisciplineByName($userInterestData['discipline']);
             }
+            if($userInterestData['state']) {
+                $state = $stateService->getStateByName($userInterestData['state']);
+            }
+            if($userInterestData['city']) {
+                $city = $userInterestData['city'];
+            }
+            $userInterests[] = array(
+                'discipline' => $discipline,
+                'state' => $state,
+                'city' => $city,
+            );
         }
-        $user->setDisciplines($userDisciplines);
+
+        $user->setInterests($userInterests);
         $manager->persist($user);
 
-        $manipulator->create('admin', '123456', 'tomaszjasek2@gmail.com', true, true);
+        $manipulator->create('admin@gmail.com', '123456', 'admin@gmail.com', true, true);
 
         $manager->flush();
     }

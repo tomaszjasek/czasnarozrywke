@@ -20,11 +20,11 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(name="disciplines", type="array", nullable=TRUE)
+     * @ORM\Column(name="interests", type="array", nullable=TRUE)
      *
      * @var array
      */
-    protected $disciplines;
+    protected $interests;
 
     /**
      * @var \DateTime
@@ -43,7 +43,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->disciplines = array();
+        $this->interests = array();
         $this->created_at = $this->updated_at = new \DateTime('now');
     }
 
@@ -53,59 +53,67 @@ class User extends BaseUser
         $this->updated_at = new \DateTime('now');
     }
 
-    public function setDisciplines(array $disciplines)
+    public function setEmail($email)
     {
-        $this->disciplines = array();
+        parent::setEmail($email);
+        $this->setUsername($email);
 
-        foreach ($disciplines as $discipline) {
-            $this->addDiscipline($discipline);
+        return $this;
+    }
+
+    public function setInterests(array $interests)
+    {
+        $this->interests = array();
+
+        foreach ($interests as $interest) {
+            $this->addInterest($interest);
         }
 
         return $this;
     }
 
-    public function addDiscipline($discipline)
+    public function addInterest($interest)
     {
-        if (!in_array($discipline, $this->disciplines, true)) {
-            $this->disciplines[] = $discipline;
+        if (!in_array($interest, $this->interests, true)) {
+            $this->interests[] = $interest;
         }
 
         return $this;
     }
 
     /**
-     * Returns the user disciplines
+     * Returns the user interests
      *
-     * @return array The disciplines
+     * @return array The interests
      */
-    public function getDisciplines()
+    public function getInterests()
     {
-        usort($this->disciplines, array($this,'sortByName'));
-        return $this->disciplines;
+        //usort($this->interests, array($this,'sortByName'));
+        return $this->interests;
     }
 
     /**
-     * @param string $discipline
+     * @param string $interest
      *
      * @return boolean
      */
-    public function hasDiscipline($discipline)
+    public function hasInterest($interest)
     {
-        return in_array($discipline, $this->getDisciplines(), true);
+        return in_array($interest, $this->getInterests(), true);
     }
 
-    public function removeDiscipline($discipline)
+    public function removeInterest($interest)
     {
-        if (false !== $key = array_search($discipline, $this->disciplines, true)) {
-            unset($this->disciplines[$key]);
-            $this->disciplines = array_values($this->disciplines);
+        if (false !== $key = array_search($interest, $this->interests, true)) {
+            unset($this->interests[$key]);
+            $this->interests = array_values($this->interests);
         }
 
         return $this;
     }
 
-    protected function sortByName(Discipline $a, Discipline $b)
+    protected function sortByName(array $a, array $b)
     {
-        return strcmp($a->getName(), $b->getName());
+        //return strcmp($a->getName(), $b->getName());
     }
 }
