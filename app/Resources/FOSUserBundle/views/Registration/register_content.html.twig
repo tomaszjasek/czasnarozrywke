@@ -1,59 +1,9 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% set disciplines = get_disciplines() %}
-{% set states = get_states() %}
-
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
 
-    {{ 'form.disciplines'|trans }}
-
-    <table>
-        <thead>
-            <tr>
-                <th>{{ 'form.discipline'|trans }}</th>
-                <th>{{ 'form.state'|trans }}</th>
-                <th>{{ 'form.city'|trans }}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for discipline in disciplines %}
-            <tr>
-                <td>
-                    <label>
-                        <input type="checkbox" name="fos_user_registration_form[interests][{{ discipline.id }}][discipline]" />
-                        {{ discipline.name }}
-                    </label>
-                </td>
-                <td>
-                    <select name="fos_user_registration_form[interests][{{ discipline.id }}][state]" >
-                        <option value="">{{ 'form.all'|trans }}</option>
-                        {% for state in states %}
-                            <option value="{{ state.id }}">{{ state.name }}</option>
-                        {% endfor %}
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="fos_user_registration_form[interests][{{ discipline.id }}][city]" />
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    {#<select name="fos_user_registration_form[interests][365][state]" >
-        <option value=""{% if required and value is empty %} selected="selected"{% endif %}>Wszystkie</option>
-        {%- endif %}
-        {%- if preferred_choices|length > 0 -%}
-            {% set options = preferred_choices %}
-            {{- block('choice_widget_options') -}}
-            {% if choices|length > 0 and separator is not none -%}
-                <option disabled="disabled">{{ separator }}</option>
-            {%- endif %}
-        {%- endif -%}
-        {% set options = choices -%}
-        {{- block('choice_widget_options') -}}
-    </select>#}
+    {{ include('AppBundle:blocks:interests.html.twig', { 'form' : form}) }}
     <div>
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>

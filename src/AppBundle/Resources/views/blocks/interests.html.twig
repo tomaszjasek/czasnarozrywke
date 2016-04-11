@@ -1,0 +1,65 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% set disciplines = get_disciplines() %}
+{% set states = get_states() %}
+
+{{ 'form.disciplines'|trans }}
+
+<table>
+  <thead>
+  <tr>
+    <th>{{ 'form.discipline'|trans }}</th>
+    <th>{{ 'form.state'|trans }}</th>
+    <th>{{ 'form.city'|trans }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for discipline in disciplines %}
+    {% set formInterest = (form.vars.value.interests is defined ? form.vars.value.interests : []) %}
+    <tr>
+      <td>
+        <label>
+          <input type="checkbox" name="fos_user_registration_form[interests][{{ discipline.id }}][discipline]"
+              {% for interest in formInterest %}
+                {% if interest.discipline.id is defined and interest.discipline.id == discipline.id %}
+                  checked="checked"
+                {% endif %}
+              {% endfor %}
+              />
+          {{ discipline.name }}
+        </label>
+      </td>
+      <td>
+        <select name="fos_user_registration_form[interests][{{ discipline.id }}][state]" >
+          <option value="" {% if interest.state.id is not defined %}selected="selected"{% endif %}>{{ 'form.all'|trans }}</option>
+          {% for state in states %}
+            <option value="{{ state.id }}"
+                {% for interest in formInterest %}
+              {% if interest.discipline.id is defined
+              and interest.discipline.id == discipline.id
+              and interest.state.id is defined
+              and interest.state.id == state.id
+              %}
+                selected="selected"
+              {% endif %}
+                {% endfor %}>
+              {{ state.name }}
+            </option>
+          {% endfor %}
+        </select>
+      </td>
+      <td>
+        <input type="text" name="fos_user_registration_form[interests][{{ discipline.id }}][city]"
+            {% for interest in formInterest %}
+              {% if interest.discipline.id is defined
+              and interest.discipline.id == discipline.id
+              and interest.city is defined
+              %}
+                value="{{ interest.city }}"
+              {% endif %}
+            {% endfor %} />
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>

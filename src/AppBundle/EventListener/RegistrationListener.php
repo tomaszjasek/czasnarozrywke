@@ -60,14 +60,14 @@ class RegistrationListener implements EventSubscriberInterface
                             $userInterest['city'] = $interest['city'];
                         }
                     }
-                    if(!empty($userInterest)) {
+                    if(count($userInterest) > 0) {
                         $userInterests[] = $userInterest;
                     }
                 }
             }
         }
 
-        if(!empty($userInterests)) {
+        if(count($userInterests) > 0) {
             $user->setInterests($userInterests);
         }
     }
