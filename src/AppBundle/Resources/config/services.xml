@@ -28,7 +28,7 @@
             <tag name="form.type" alias="app_user_profile" />
         </service>
 
-        <service id="app.registration.listener" class="AppBundle\EventListener\RegistrationListener">
+        <service id="app.interests.listener" class="AppBundle\EventListener\InterestsListener">
             <argument type="service" id="app.service.discipline" />
             <argument type="service" id="app.service.state" />
             <tag name="kernel.event_subscriber"/>

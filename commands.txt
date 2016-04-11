@@ -17,6 +17,3 @@ php bin/console assetic:dump
 
 INSTALL ASSETS
 php bin/console assets:install
-
-CREATE USER
-php bin/console fos:user:create test test@example.com 123456

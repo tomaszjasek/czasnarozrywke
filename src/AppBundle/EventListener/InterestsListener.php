@@ -18,7 +18,7 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class RegistrationListener implements EventSubscriberInterface
+class InterestsListener implements EventSubscriberInterface
 {
     protected $disciplineService;
 
@@ -35,7 +35,8 @@ class RegistrationListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::REGISTRATION_INITIALIZE => 'onRegistrationInit'
+            FOSUserEvents::REGISTRATION_INITIALIZE => 'onRegistrationInit',
+            FOSUserEvents::PROFILE_EDIT_INITIALIZE => 'onRegistrationInit'
         );
     }
     public function onRegistrationInit(GetResponseUserEvent $event)

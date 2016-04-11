@@ -4,11 +4,38 @@
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
 
     <p>{{ 'profile.disciplines'|trans }}</p>
-    <ul>
+
+    <table>
+        <thead>
+        <tr>
+            <th>{{ 'form.discipline'|trans }}</th>
+            <th>{{ 'form.state'|trans }}</th>
+            <th>{{ 'form.city'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for interest in user.interests %}
+            <tr>
+                <td>{{ interest.discipline.name }}</td>
+                <td>
+                    {% if interest.state.name is defined %}
+                        {{ interest.state.name }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if interest.city is defined %}
+                        {{ interest.city }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {#<ul>
         {% for discipline in user.disciplines %}
             <li>{{ discipline.name }}</li>
         {% endfor %}
-    </ul>
+    </ul>#}
 
     <a href="{{ path('fos_user_profile_edit') }}">
         {{ 'profile.edit.submit'|trans }}

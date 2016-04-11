@@ -18,6 +18,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class ProfileType extends AbstractType
@@ -66,6 +67,17 @@ class ProfileType extends AbstractType
 //                'multiple' => true,
 //                'data' => $data
 //            ));
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Entity\User',
+            'csrf_token_id' => 'profile',
+            'allow_extra_fields' => true,
+            // BC for SF < 2.8
+            'intention'  => 'profile',
+        ));
     }
 
     public function getParent()
