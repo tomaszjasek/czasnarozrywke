@@ -13,7 +13,7 @@ class LoadNavigationData implements FixtureInterface, OrderedFixtureInterface
     {
         $navigation = new Navigation();
         $navigation->setName('STRONA GŁÓWNA');
-        $navigation->setUrl('/');
+        $navigation->setUrl('startPage');
         $navigation->setParentId(0);
         $navigation->setActive(1);
         $navigation->setOrder(1);
@@ -37,7 +37,7 @@ class LoadNavigationData implements FixtureInterface, OrderedFixtureInterface
 
         $navigation = new Navigation();
         $navigation->setName('REJESTRACJA');
-        $navigation->setUrl('/register');
+        $navigation->setUrl('fos_user_registration_register');
         $navigation->setParentId(0);
         $navigation->setActive(1);
         $navigation->setOrder(4);
@@ -45,7 +45,7 @@ class LoadNavigationData implements FixtureInterface, OrderedFixtureInterface
 
         $navigation = new Navigation();
         $navigation->setName('KONTAKT');
-        $navigation->setUrl('/contact');
+        $navigation->setUrl('contact');
         $navigation->setParentId(0);
         $navigation->setActive(1);
         $navigation->setOrder(5);

@@ -1,3 +1,7 @@
 startPage:
     path: /
     defaults: { _controller: AppBundle:Default:index }
+
+contact:
+    path: /kontakt
+    defaults: { _controller: AppBundle:Default:contact }

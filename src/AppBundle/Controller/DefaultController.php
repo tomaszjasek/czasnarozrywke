@@ -13,7 +13,17 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
         return $this->render('AppBundle::startPage.html.twig');
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function contactAction(Request $request)
+    {
+
+        return $this->render('AppBundle::contact.html.twig');
+    }
+
 }
