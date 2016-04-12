@@ -4,7 +4,7 @@
 
     {{ form_widget(form) }}
 
-    {{ include('AppBundle:blocks:interests.html.twig', { 'form' : form}) }}
+    {{ include('FOSUserBundle:blocks:interests.html.twig', { 'form' : form}) }}
 
     <div>
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />

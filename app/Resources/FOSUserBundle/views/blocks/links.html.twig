@@ -1,0 +1,11 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+  <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.profile'|trans({}, 'FOSUserBundle') }}</a> |
+  <a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.edit.submit'|trans }}</a> |
+  <a href="{{ path('fos_user_change_password') }}">{{ 'change_password.submit'|trans }}</a> |
+  <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+{% else %}
+  <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans }}</a> |
+  <a href="{{ path('fos_user_resetting_request') }}">{{ 'layout.password_forgot'|trans }}</a>
+{% endif %}

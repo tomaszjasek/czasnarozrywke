@@ -31,16 +31,4 @@
         {% endfor %}
         </tbody>
     </table>
-    {#<ul>
-        {% for discipline in user.disciplines %}
-            <li>{{ discipline.name }}</li>
-        {% endfor %}
-    </ul>#}
-
-    <a href="{{ path('fos_user_profile_edit') }}">
-        {{ 'profile.edit.submit'|trans }}
-    </a> |
-    <a href="{{ path('fos_user_change_password') }}">
-        {{ 'change_password.submit'|trans }}
-    </a>
 </div>

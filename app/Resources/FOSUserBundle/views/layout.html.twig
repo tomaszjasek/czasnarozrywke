@@ -4,6 +4,8 @@
   <div id="center">
     <div class="news">
 
+      {{ include('FOSUserBundle:blocks:links.html.twig') }}
+
       {% if app.request.hasPreviousSession %}
         {% for type, messages in app.session.flashbag.all() %}
           {% for message in messages %}
