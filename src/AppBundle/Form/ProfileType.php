@@ -23,50 +23,11 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class ProfileType extends AbstractType
 {
-    /**
-     * @var TokenStorage
-     */
-    protected $tokenStorage;
-
-    public function __construct(
-        EntityManager $em,
-        TokenStorage $tokenStorage
-    ) {
-        $this->em = $em;
-        $this->tokenStorage = $tokenStorage;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /** @var User $user */
-        $userInterests = $this->tokenStorage->getToken()->getUser()->getInterests();
-
-        $data = array();
-        foreach($userInterests as $interest) {
-            $discipline = $interest['discipline'];
-            /** @var Discipline $discipline */
-            $data[] = $this->em->getReference('AppBundle:Discipline', $discipline->getId());
-        }
-
         $builder
             ->remove('current_password')
             ->remove('username');
-//            ->add('disciplines', EntityType::class, array(
-//                'class' => 'AppBundle:Discipline',
-//                'label' => 'form.disciplines',
-//                'translation_domain' => 'FOSUserBundle',
-//                'choice_label' => function($discipline) {
-//                    /** @var Discipline $discipline */
-//                   return $discipline->getName();
-//                },
-//                'query_builder' => function(EntityRepository $er) {
-//                    return $er->createQueryBuilder('d')
-//                        ->orderBy('d.name', 'ASC');
-//                },
-//                'expanded' => true,
-//                'multiple' => true,
-//                'data' => $data
-//            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

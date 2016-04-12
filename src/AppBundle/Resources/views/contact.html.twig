@@ -4,6 +4,13 @@
   <div id="center">
     <div class="news">
 
+      {{ form_start(form, {'attr': {'class': 'contact-class'} }) }}
+        {{ form_widget(form) }}
+
+        <div>
+          <input type="submit" value="{{ 'contact.submit'|trans }}" />
+        </div>
+      {{ form_end(form) }}
 
     </div>
   </div>

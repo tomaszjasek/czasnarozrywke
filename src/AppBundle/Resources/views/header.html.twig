@@ -13,16 +13,6 @@
   {% else %}
     {% if app.request.get('_route') != 'fos_user_security_login' %}
 
-      {% if app.request.hasPreviousSession %}
-        {% for type, messages in app.session.flashbag.all() %}
-          {% for message in messages %}
-            <div class="flash-{{ type }}">
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endfor %}
-      {% endif %}
-
       <form action="{{ path("fos_user_security_check") }}" method="post">
         <input type="hidden" name="_csrf_token" value="{{ fos_csrf_provider.getToken('authenticate').getValue() }}" />
 

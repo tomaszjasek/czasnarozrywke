@@ -17,15 +17,15 @@
         </service>
 
         <service id="app.form.registration" class="AppBundle\Form\RegistrationType">
-            <argument type="service" id="app.service.discipline" />
-            <argument type="service" id="app.service.state" />
             <tag name="form.type" alias="app_user_registration" />
         </service>
 
         <service id="app.form.profile" class="AppBundle\Form\ProfileType">
-            <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="security.token_storage" />
             <tag name="form.type" alias="app_user_profile" />
+        </service>
+
+        <service id="app.form.contact" class="AppBundle\Form\ContactType">
+            <tag name="form.type" />
         </service>
 
         <service id="app.interests.listener" class="AppBundle\EventListener\InterestsListener">

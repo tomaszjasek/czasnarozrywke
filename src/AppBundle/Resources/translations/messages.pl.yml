@@ -1,4 +1,10 @@
 discipline_type: "typ rozrywki"
 
+contact:
+    submit: "Wyślij"
+
 footer:
     text: "Copyright (c) tenis-amatorski.pl 2014. Wszelkie prawa zastrzeżone."
+
+success:
+    contact: "Twój email został wysłany! Dziękujemy!"
