@@ -44,7 +44,10 @@
     {% endif %}
 
     {% block left_panel %}
-        {{ render(controller("AppBundle:Navigation:disciplinesNavigation")) }}
+        {{ render(controller("AppBundle:Navigation:leftNavigation", {
+            'discipline' : app.request.attributes.get('discipline') ,
+            'state' : app.request.attributes.get('state')
+        } )) }}
     {% endblock %}
 
     {% block content %}{% endblock %}

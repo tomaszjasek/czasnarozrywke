@@ -5,3 +5,11 @@ startPage:
 contact:
     path: /kontakt
     defaults: { _controller: AppBundle:Default:contact }
+
+
+
+sport:
+    path: /sport/{discipline}/{state}
+    defaults:
+        _controller: AppBundle:Sport:index
+        state: null

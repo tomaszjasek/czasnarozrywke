@@ -9,16 +9,23 @@ class NavigationController extends Controller
 {
     /**
      * @param Request $request
+     * @param $discipline
+     * @param $state
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function disciplinesNavigationAction(Request $request)
+    public function leftNavigationAction(Request $request, $discipline, $state)
     {
         $disciplineService = $this->get('app.service.discipline');
-
         $disciplines = $disciplineService->getDisciplines();
 
-        return $this->render('AppBundle:Navigation:disciplines.html.twig', array(
-            'disciplines' => $disciplines
+        $stateService = $this->get('app.service.state');
+        $states = $stateService->getStates();
+
+        return $this->render('AppBundle:Navigation:left.html.twig', array(
+            'disciplines' => $disciplines,
+            'states' => $states,
+            'currentDiscipline' => $discipline,
+            'currentState' => $state
         ));
     }
 

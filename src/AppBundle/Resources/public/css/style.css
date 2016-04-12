@@ -385,3 +385,12 @@ p.shout {
     color: #000000;
     width: auto;
 }
+
+ul.menuv li a.current {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+ul.menuv-second {
+    margin-left: 20px;
+}

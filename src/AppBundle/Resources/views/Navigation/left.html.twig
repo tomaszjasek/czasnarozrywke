@@ -1,0 +1,27 @@
+<div id="left">
+  <div class="box">
+    <h2>{{ 'discipline_type'|trans|upper }}</h2>
+    <ul class="menuv">
+    {% for discipline in disciplines %}
+      <li>
+        <a {% if currentDiscipline is defined and currentDiscipline == discipline.id %}class="current"{% endif %}
+           href="{{ path('sport', {'discipline' : discipline.id }) }}">
+          {{ discipline.name|upper }}
+        </a>
+        {% if currentDiscipline is defined and currentDiscipline == discipline.id %}
+          <ul class="menuv-second">
+            {% for state in states %}
+              <li>
+                <a {% if currentState is defined and currentState == state.id %}class="current"{% endif %}
+                   href="{{ path('sport', {'discipline' : discipline.id, 'state' : state.id }) }}">
+                  {{ state.name|upper }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
