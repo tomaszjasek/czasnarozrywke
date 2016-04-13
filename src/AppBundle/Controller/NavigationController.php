@@ -15,15 +15,7 @@ class NavigationController extends Controller
      */
     public function leftNavigationAction(Request $request, $discipline, $state)
     {
-        $disciplineService = $this->get('app.service.discipline');
-        $disciplines = $disciplineService->getDisciplines();
-
-        $stateService = $this->get('app.service.state');
-        $states = $stateService->getStates();
-
         return $this->render('AppBundle:Navigation:left.html.twig', array(
-            'disciplines' => $disciplines,
-            'states' => $states,
             'currentDiscipline' => $discipline,
             'currentState' => $state
         ));
@@ -36,7 +28,6 @@ class NavigationController extends Controller
     public function mainNavigationAction(Request $request)
     {
         $navigationService = $this->get('app.service.navigation');
-
         $navigation = $navigationService->getMainNavigation();
 
         return $this->render('AppBundle:Navigation:menu.html.twig', array(

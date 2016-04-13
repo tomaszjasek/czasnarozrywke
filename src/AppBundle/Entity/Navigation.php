@@ -36,9 +36,10 @@ class Navigation
     /**
      * @var string
      *
-     * @ORM\Column(name="parent_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Discipline")
+     * @ORM\JoinColumn(name="discipline_id", referencedColumnName="id")
      */
-    private $parentId;
+    private $disciplineId;
 
     /**
      * @var boolean
@@ -164,22 +165,6 @@ class Navigation
     /**
      * @return string
      */
-    public function getParentId()
-    {
-        return $this->parentId;
-    }
-
-    /**
-     * @param string $parentId
-     */
-    public function setParentId($parentId)
-    {
-        $this->parentId = $parentId;
-    }
-
-    /**
-     * @return string
-     */
     public function getContent()
     {
         return $this->content;
@@ -191,5 +176,21 @@ class Navigation
     public function setContent($content)
     {
         $this->content = $content;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDisciplineId()
+    {
+        return $this->disciplineId;
+    }
+
+    /**
+     * @param string $disciplineId
+     */
+    public function setDisciplineId($disciplineId)
+    {
+        $this->disciplineId = $disciplineId;
     }
 }
