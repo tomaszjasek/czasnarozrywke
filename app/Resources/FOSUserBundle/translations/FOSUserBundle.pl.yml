@@ -10,6 +10,7 @@ security:
 layout:
     password_forgot: 'Zapomniałem hasła'
     profile: 'Profil'
+    admin: 'Admin Panel'
 form:
     disciplines: 'Dyscypliny'
     discipline: 'Dyscyplina'

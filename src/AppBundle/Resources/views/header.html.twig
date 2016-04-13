@@ -3,12 +3,17 @@
 <div id="loginbox">
 
   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}) }} |
+    {% if is_granted('ROLE_ADMIN') %}
+      <a href="{{ path('sonata_admin_dashboard') }}">
+        {{ 'layout.admin'|trans }}
+      </a> |
+    {% endif %}
     <a href="{{ path('fos_user_profile_show') }}">
-      {{ 'layout.profile'|trans({}, 'FOSUserBundle') }}
+      {{ 'layout.profile'|trans }}
     </a> |
     <a href="{{ path('fos_user_security_logout') }}">
-      {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+      {{ 'layout.logout'|trans }}
     </a>
   {% else %}
     {% if app.request.get('_route') != 'fos_user_security_login' %}
