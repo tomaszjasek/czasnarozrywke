@@ -22,7 +22,7 @@ class NavigationAdmin extends Admin
                 ->add('content', TextareaType::class, array('label' => 'Content'))
             ->end()
             ->with('Meta data', array('class' => 'col-md-3'))
-                ->add('disciplineId', 'sonata_type_model', array(
+                ->add('discipline', 'sonata_type_model', array(
                     'label' => 'Discipline',
                     'class' => 'AppBundle\Entity\Discipline',
                     'property' => 'name',
@@ -49,6 +49,10 @@ class NavigationAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('discipline.name')
+            ->add('url')
+            ->add('active')
+            ->add('order')
         ;
     }
 

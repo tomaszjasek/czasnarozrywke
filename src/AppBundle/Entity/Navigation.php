@@ -37,9 +37,9 @@ class Navigation
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="Discipline")
-     * @ORM\JoinColumn(name="discipline_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="discipline", referencedColumnName="id")
      */
-    private $disciplineId;
+    private $discipline;
 
     /**
      * @var boolean
@@ -181,16 +181,16 @@ class Navigation
     /**
      * @return string
      */
-    public function getDisciplineId()
+    public function getDiscipline()
     {
-        return $this->disciplineId;
+        return $this->discipline;
     }
 
     /**
-     * @param string $disciplineId
+     * @param string $discipline
      */
-    public function setDisciplineId($disciplineId)
+    public function setDiscipline($discipline)
     {
-        $this->disciplineId = $disciplineId;
+        $this->discipline = $discipline;
     }
 }

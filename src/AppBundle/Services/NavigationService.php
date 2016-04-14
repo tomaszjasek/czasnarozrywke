@@ -28,6 +28,6 @@ class NavigationService {
 
     public function getMainNavigation()
     {
-        return $this->repository->findBy(['disciplineId' => null, 'active' => 1], ['order' => 'ASC']);
+        return $this->repository->findBy(['discipline' => null, 'active' => 1], ['order' => 'ASC']);
     }
 } 

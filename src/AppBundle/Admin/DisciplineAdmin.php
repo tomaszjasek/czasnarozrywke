@@ -2,6 +2,7 @@
 
 namespace AppBundle\Admin;
 
+use AppBundle\Entity\Discipline;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -38,5 +39,12 @@ class DisciplineAdmin extends Admin
             ->add('active')
             ->add('order')
         ;
+    }
+
+    public function toString($object)
+    {
+        return $object instanceof Discipline
+            ? $object->getName()
+            : 'Discipline Item'; // shown in the breadcrumb on the create view
     }
 }
