@@ -17,7 +17,8 @@ class DisciplineAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', TextType::class, array('label' => 'Name'))
+            ->add('name')
+            ->add('url')
             ->add('active')
             ->add('order')
         ;
@@ -36,6 +37,7 @@ class DisciplineAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('url')
             ->add('active')
             ->add('order')
         ;

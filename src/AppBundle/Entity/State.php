@@ -20,6 +20,13 @@ class State
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255, nullable=false)
+     */
+    private $url;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -60,5 +67,21 @@ class State
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
     }
 }

@@ -7,6 +7,13 @@ contact:
     defaults: { _controller: AppBundle:Default:contact }
 
 sport:
+    path: /sport/{discipline}
+    defaults:
+        _controller: AppBundle:Sport:index
+        state: null
+        page: null
+
+sport_state:
     path: /sport/{discipline}/wojewodztwo/{state}
     defaults:
         _controller: AppBundle:Sport:index

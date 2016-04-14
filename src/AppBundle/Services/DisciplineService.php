@@ -40,4 +40,9 @@ class DisciplineService {
     {
         return $this->repository->findOneBy(['name' => $name]);
     }
+
+    public function getDisciplineByUrl($url)
+    {
+        return $this->repository->findOneBy(['url' => $url]);
+    }
 } 

@@ -23,6 +23,7 @@ class NavigationController extends Controller
 
     /**
      * @param Request $request
+     * @param $discipline
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function mainNavigationAction(Request $request, $discipline)
@@ -31,7 +32,9 @@ class NavigationController extends Controller
         $navigation = $navigationService->getMainNavigation();
         $subNavigation = null;
         if($discipline) {
-            $subNavigation = $navigationService->getSubNavigation($discipline);
+            $disciplineService = $this->get('app.service.discipline');
+            $discipline = $disciplineService->getDisciplineByUrl($discipline);
+            $subNavigation = $navigationService->getSubNavigation($discipline->getId());
         }
 
         return $this->render('AppBundle:Navigation:menu.html.twig', array(
