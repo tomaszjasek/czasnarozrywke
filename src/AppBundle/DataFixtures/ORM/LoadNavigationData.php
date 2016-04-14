@@ -6,9 +6,21 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Navigation;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadNavigationData implements FixtureInterface, OrderedFixtureInterface
+class LoadNavigationData implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     public function load(ObjectManager $manager)
     {
         $navigation = new Navigation();
@@ -59,6 +71,16 @@ class LoadNavigationData implements FixtureInterface, OrderedFixtureInterface
         $navigation->setOrder(6);
         $manager->persist($navigation);
 
+        $disciplineService = $this->container->get('app.service.discipline');
+        $discipline = $disciplineService->getDisciplineByName('piłka nożna');
+        $navigation = new Navigation();
+        $navigation->setName('Trenerzy');
+        $navigation->setUrl('trenerzy');
+        $navigation->setDiscipline($discipline);
+        $navigation->setActive(1);
+        $navigation->setOrder(1);
+        $manager->persist($navigation);
+
         $manager->flush();
     }
 
@@ -66,6 +88,6 @@ class LoadNavigationData implements FixtureInterface, OrderedFixtureInterface
     {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 1;
+        return 2;
     }
 }

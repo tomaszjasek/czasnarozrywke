@@ -5,9 +5,7 @@
 </ul>
 
 <ul id="submenu">
-  <li><a href="#">Zgłoś turniej</a></li>
-  <li><a href="#">Zgłoś ligę</a></li>
-  <li><a href="#">Zgłoś lokal</a></li>
-  <li><a href="#">Video</a></li>
-  <li><a href="#">Zgłoś się jako trener</a></li>
+  {% for subNode in subNavigation %}
+    <li><a href="{{ path('sport_page', { 'discipline' : subNode.discipline.id, 'page' : subNode.name }) }}">{{ subNode.name }}</a></li>
+  {% endfor %}
 </ul>

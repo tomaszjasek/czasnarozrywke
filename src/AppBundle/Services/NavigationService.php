@@ -30,4 +30,9 @@ class NavigationService {
     {
         return $this->repository->findBy(['discipline' => null, 'active' => 1], ['order' => 'ASC']);
     }
+
+    public function getSubNavigation($id)
+    {
+        return $this->repository->findBy(['discipline' => $id, 'active' => 1], ['order' => 'ASC']);
+    }
 } 

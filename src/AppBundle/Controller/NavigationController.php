@@ -25,12 +25,17 @@ class NavigationController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function mainNavigationAction(Request $request)
+    public function mainNavigationAction(Request $request, $discipline)
     {
         $navigationService = $this->get('app.service.navigation');
         $navigation = $navigationService->getMainNavigation();
+        $subNavigation = null;
+        if($discipline) {
+            $subNavigation = $navigationService->getSubNavigation($discipline);
+        }
 
         return $this->render('AppBundle:Navigation:menu.html.twig', array(
+            'subNavigation' => $subNavigation,
             'navigation' => $navigation
         ));
     }

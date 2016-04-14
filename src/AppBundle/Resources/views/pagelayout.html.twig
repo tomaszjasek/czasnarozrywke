@@ -29,7 +29,9 @@
     {% endblock %}
 </div>
 
-{{ render(controller("AppBundle:Navigation:mainNavigation")) }}
+{{ render(controller("AppBundle:Navigation:mainNavigation", {
+    'discipline' : app.request.attributes.get('discipline')
+} )) }}
 
 <div id="main">
 
@@ -45,7 +47,7 @@
 
     {% block left_panel %}
         {{ render(controller("AppBundle:Navigation:leftNavigation", {
-            'discipline' : app.request.attributes.get('discipline') ,
+            'discipline' : app.request.attributes.get('discipline'),
             'state' : app.request.attributes.get('state')
         } )) }}
     {% endblock %}
