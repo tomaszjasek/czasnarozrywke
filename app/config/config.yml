@@ -93,6 +93,9 @@ sonata_block:
             contexts:   [admin]
         # Your other blocks
 
+sonata_admin:
+    title:      czasnarozrywke.pl
+
 assetic:
     debug: '%kernel.debug%'
     use_controller: false
