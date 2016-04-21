@@ -19,7 +19,12 @@ class NavigationAdmin extends Admin
             ->with('Content', array('class' => 'col-md-9'))
                 ->add('name', TextType::class, array('label' => 'Name'))
                 ->add('url', TextType::class, array('label' => 'Url'))
-                ->add('content', TextareaType::class, array('label' => 'Content'))
+                ->add('content', TextareaType::class, array(
+                    'attr' => array(
+                        'class' => 'tinymce'
+                    ),
+                    'label' => 'Content'
+                ))
             ->end()
             ->with('Meta data', array('class' => 'col-md-3'))
                 ->add('discipline', 'sonata_type_model', array(

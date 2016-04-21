@@ -95,7 +95,35 @@ sonata_block:
 
 sonata_admin:
     title:      czasnarozrywke.pl
+    templates:
+        layout: AppBundle:Admin:standard_layout.html.twig
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [app.admin.group.user, app.admin.group.navigation]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [app.admin.group.other]
 
+        groups:
+            app.admin.group.user:
+                label: Users
+                items:
+                    - sonata.admin.user
+            app.admin.group.navigation:
+                label: Navigation
+                items:
+                    - sonata.admin.navigation
+            app.admin.group.other:
+                label: Lists
+                items:
+                    - sonata.admin.discipline
+                    - sonata.admin.state
 assetic:
     debug: '%kernel.debug%'
     use_controller: false

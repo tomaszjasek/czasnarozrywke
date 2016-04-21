@@ -35,4 +35,9 @@ class NavigationService {
     {
         return $this->repository->findBy(['discipline' => $id, 'active' => 1], ['order' => 'ASC']);
     }
+
+    public function getNavigationByRoute($route)
+    {
+        return $this->repository->findOneBy(['url' => $route, 'active' => 1]);
+    }
 } 

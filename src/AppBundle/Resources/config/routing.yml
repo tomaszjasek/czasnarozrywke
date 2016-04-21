@@ -22,6 +22,5 @@ sport_state:
 sport_page:
     path: /sport/{discipline}/strona/{page}
     defaults:
-        _controller: AppBundle:Sport:index
-        state: null
+        _controller: AppBundle:Sport:page
         page: null

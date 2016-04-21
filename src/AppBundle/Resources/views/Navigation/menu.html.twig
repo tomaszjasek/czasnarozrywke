@@ -6,6 +6,6 @@
 
 <ul id="submenu">
   {% for subNode in subNavigation %}
-    <li><a href="{{ path('sport_page', { 'discipline' : subNode.discipline.id, 'page' : subNode.name }) }}">{{ subNode.name }}</a></li>
+    <li><a href="{{ path('sport_page', { 'discipline' : subNode.discipline.url, 'page' : subNode.url }) }}">{{ subNode.name }}</a></li>
   {% endfor %}
 </ul>

@@ -16,7 +16,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('AppBundle::startPage.html.twig');
+        $navigationService = $this->get('app.service.navigation');
+        $startPage = $navigationService->getNavigationByRoute('startPage');
+        return $this->render('AppBundle::startPage.html.twig', array(
+            'content' => $startPage->getContent()
+        ));
     }
 
     /**
@@ -54,7 +58,7 @@ class DefaultController extends Controller
         }
 
         return $this->render('AppBundle::contact.html.twig', array(
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ));
     }
 
