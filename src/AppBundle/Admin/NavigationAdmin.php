@@ -12,6 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NavigationAdmin extends Admin
 {
+    protected $datagridValues = array(
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'discipline.name',
+    );
+
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -46,6 +51,7 @@ class NavigationAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
+            ->add('discipline.name')
         ;
     }
 
@@ -58,6 +64,13 @@ class NavigationAdmin extends Admin
             ->add('url')
             ->add('active')
             ->add('order')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
 
