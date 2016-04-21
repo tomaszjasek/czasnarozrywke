@@ -33,7 +33,7 @@ class LoadStateData implements FixtureInterface, OrderedFixtureInterface
 
         $state = new State();
         $state->setName('łódzkie');
-        $state->setUrl('kujawsko_pomorskie');
+        $state->setUrl('lodzkie');
         $manager->persist($state);
 
         $state = new State();
