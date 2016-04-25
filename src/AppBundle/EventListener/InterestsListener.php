@@ -17,6 +17,8 @@ use AppBundle\Services\StateService;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class InterestsListener implements EventSubscriberInterface
 {
@@ -36,9 +38,11 @@ class InterestsListener implements EventSubscriberInterface
     {
         return array(
             FOSUserEvents::REGISTRATION_INITIALIZE => 'onRegistrationInit',
-            FOSUserEvents::PROFILE_EDIT_INITIALIZE => 'onRegistrationInit'
+            FOSUserEvents::PROFILE_EDIT_INITIALIZE => 'onRegistrationInit',
+            FormEvents::PRE_SUBMIT => 'onPreSubmit'
         );
     }
+
     public function onRegistrationInit(GetResponseUserEvent $event)
     {
         /** @var User $user */
@@ -71,5 +75,29 @@ class InterestsListener implements EventSubscriberInterface
         if(count($userInterests) > 0) {
             $user->setInterests($userInterests);
         }
+    }
+
+    public function onPreSubmit(FormEvent $event)
+    {
+        $data = $event->getData();
+        $userInterests = [];
+        foreach($data as $key => $interest) {
+            $userInterest = [];
+            if(array_key_exists('discipline', $interest) && $interest['discipline']) {
+                $userInterest['discipline'] = $this->disciplineService->getDiscipline($key);
+                if(array_key_exists('state', $interest) && $interest['state']) {
+                    $userInterest['state'] = $this->stateService->getState((int)$interest['state']);
+                }
+                if(array_key_exists('city', $interest) && $interest['city']) {
+                    $userInterest['city'] = $interest['city'];
+                }
+            }
+            if(count($userInterest) > 0) {
+                $userInterests[] = $userInterest;
+            }
+        }
+
+        $form = $event->getForm();
+        $form->setData($userInterests);
     }
 }

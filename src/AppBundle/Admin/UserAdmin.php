@@ -2,6 +2,7 @@
 
 namespace AppBundle\Admin;
 
+use AppBundle\Form\InterestsType;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -13,17 +14,17 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Data', array('class' => 'col-md-6'))
+            ->with('Data', array('class' => 'col-md-9'))
                 ->add('email')
                 ->add('enabled')
                 ->add('locked')
                 ->add('expired')
             ->end()
             ->with('Roles', array('class' => 'col-md-3'))
-
+                ->add('roles', 'collection')
             ->end()
-            ->with('Interest', array('class' => 'col-md-3'))
-
+            ->with('Interest', array('class' => 'col-md-9'))
+                ->add('interests', InterestsType::class)
             ->end()
         ;
     }

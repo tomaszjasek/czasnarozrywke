@@ -38,7 +38,8 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         fos_csrf_provider: "@security.csrf.token_manager"
-
+    form_themes:
+        - 'form/fields.html.twig'
 # Doctrine Configuration
 doctrine:
     dbal:

@@ -28,6 +28,12 @@
             <tag name="form.type" />
         </service>
 
+        <service id="app.form.interests" class="AppBundle\Form\InterestsType">
+            <argument type="service" id="app.service.discipline" />
+            <argument type="service" id="app.service.state" />
+            <tag name="form.type" />
+        </service>
+
         <service id="app.interests.listener" class="AppBundle\EventListener\InterestsListener">
             <argument type="service" id="app.service.discipline" />
             <argument type="service" id="app.service.state" />
