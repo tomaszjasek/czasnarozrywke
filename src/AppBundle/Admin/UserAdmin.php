@@ -34,6 +34,8 @@ class UserAdmin extends Admin
     {
         $datagridMapper
             ->add('email')
+            ->add('roles')
+            ->add('interests')
         ;
     }
 
